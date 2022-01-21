@@ -19,6 +19,11 @@ void my_put_str(char *str)
         my_put_char(str[i]);
 }
 
+void my_put_err(char *str)
+{
+    write(2, str, my_strlen(str));
+}
+
 void my_put_nbr(int nb)
 {
     int size = my_nbrlen(nb);
