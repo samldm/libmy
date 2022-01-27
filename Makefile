@@ -5,29 +5,32 @@
 ## Makefile
 ##
 
-SRC		=	$(patsubst %.c,%.o, $(wildcard ./sources/*.c))
+SRC		=	$(patsubst %.c,%.o, \
+				$(wildcard *.c) \
+			)
 
-NAME	=	./libmy.a
+BIN		=	./a.out
 
-HEADER	=	./includes/my.h
+CC		= 	gcc
 
-TEST_F	=	$(patsubst %.c,%.o, ./tests.c)
+C_FLAGS	=	-Wall -Wextra -I include/
 
-all:		$(NAME)
+LIB_DIR =	lib/
 
-$(NAME):	$(SRC)
-	ar rc $(NAME) $(SRC)
+L_FLAGS =	-Llib -lmy
+
+all:	lib $(BIN)
+
+$(BIN):	$(SRC)
+	$(MAKE) -C $(LIB_DIR)
+	$(CC) -o $(BIN) $(SRC) $(L_FLAGS) $(C_FLAGS)
 
 clean:
+	$(MAKE) -C $(LIB_DIR) clean
 	rm -f $(SRC)
-	rm -f $(TEST_F)
 
-fclean:		clean
-	rm -f $(NAME)
-	rm -f ./tests
+fclean:	clean
+	$(MAKE) -C $(LIB_DIR) fclean
+	rm -f $(BIN)
 
-re:			fclean all
-
-test:		all $(TEST_F)
-	gcc -o ./tests $(TEST_F) -L. -lmy
-	rm -f $(TEST_F)
+re:		fclean all
