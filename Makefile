@@ -26,6 +26,8 @@ fclean:		clean
 	rm -f $(NAME)
 	rm -f ./tests
 
+re:			fclean all
+
 test:		all $(TEST_F)
 	gcc -o ./tests $(TEST_F) -L. -lmy
 	rm -f $(TEST_F)

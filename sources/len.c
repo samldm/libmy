@@ -23,3 +23,15 @@ int my_nbrlen(int nb)
         nb /= 10;
     return (s);
 }
+
+int my_unsignedlen(unsigned int nb)
+{
+    int s = 0;
+
+    if (nb < 0) {
+        nb *= (-1);
+    }
+    for (s = 1; nb >= 10; s++)
+        nb /= 10;
+    return (s);
+}

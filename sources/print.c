@@ -40,3 +40,20 @@ void my_put_nbr(int nb)
         my_put_char(48 + (x % 10));
     }
 }
+
+void my_put_unsigned(unsigned int nb)
+{
+    int size = my_unsignedlen(nb);
+    int x;
+
+    if (nb < 0) {
+        nb *= (-1);
+        my_put_char(45);
+    }
+    for (int i = 0; i < size; i++) {
+        x = nb;
+        for (int j = 1; j < (size - i); j++)
+            x /= 10;
+        my_put_char(48 + (x % 10));
+    }
+}
