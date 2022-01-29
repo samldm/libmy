@@ -12,6 +12,8 @@
 
 char **str_to_word_arr(char *str);
 
+int my_strcmp(char *src, char *str);
+
 void my_put_char(char c);
 
 void my_put_str(char *str);
