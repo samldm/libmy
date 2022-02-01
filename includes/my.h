@@ -32,6 +32,8 @@ int my_nbrlen(int nb);
 
 int my_unsignedlen(unsigned int nb);
 
+int my_getnbr(char *str);
+
 int print_str(va_list list);
 
 int print_int(va_list list);
